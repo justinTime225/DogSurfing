@@ -8,3 +8,14 @@ db.once('open', function() {
   console.log('Mongodb connection open');
 });
 
+// id
+// username
+// email
+// description
+// img
+// watching or needing 
+
+
+
+// username
+// description
