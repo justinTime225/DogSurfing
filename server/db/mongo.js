@@ -48,7 +48,7 @@ var postSchema = mongoose.Schema({
 // exports.myCar = new Car('red');
 // a model can only be created if it is given a schema/blueprint
 // we are exporting the constructors as .profile and .post
-// with mongoos methods
+// which contian mongoos methods
 
 // var Car = function(color) {
 //   this.color = red;
