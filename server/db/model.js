@@ -1,3 +1,4 @@
+<<<<<<< 392c9dce706326b4321dab9dfd8c3999fed918cf
 // grab the mongo thing  -  obj is just a container for
 var obj = require('./mongo');
 // console.log(obj);
@@ -5,6 +6,10 @@ var obj = require('./mongo');
 { profile : function - constructor with find, save, db methods -- inherited form mongoose
   post: function - constructor
 }
+=======
+// grab the mongo thing
+var Model = require('./mongo');
+>>>>>>> Create skeleton for get & post controller
 
 */
 
@@ -75,3 +80,41 @@ var profile = {
 // exports.profile.post(profile);
 exports.profile.get();
 
+<<<<<<< 392c9dce706326b4321dab9dfd8c3999fed918cf
+=======
+exports.profile = {
+  get: function() {
+    Model.profile.find( function(err, data){
+      if(err){
+        console.log(err);
+      }
+      console.log(data);
+    });
+  },
+  post: function(inputObj) {
+    var user = new Model.profile(inputObj);
+    user.save( function(err, data){
+      if(err){
+        console.log(err);
+      }
+      console.log(data);
+    });
+  }
+};
+
+exports.post = {
+  get: function() {},
+  post: function() {}
+};
+
+
+
+var profile = {
+  name: 'bob',
+  email: 'bob225@gmail.com',
+  image: 'some string'
+};
+
+exports.profile.post(profile);
+
+>>>>>>> Create skeleton for get & post controller
