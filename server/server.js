@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-
 app.get('/profile', function(req, res){
   db.profile.get(function(dataFromDb){
     res.send(dataFromDb);
@@ -37,5 +36,4 @@ app.post('/post', function(req, res){
 app.listen(5000, function(){
   console.log('listining on port 5000');
 });
-
 
