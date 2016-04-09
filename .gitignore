@@ -9,3 +9,5 @@ dist/
 .flooignore
 
 .gitignore
+clients/app/components/profile/.DS_Store
+
