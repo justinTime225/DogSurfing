@@ -1,37 +1,10 @@
 
 var obj = require('./mongo');
-// console.log(obj);
-/*
-{ profile : function - constructor with find, save, db methods -- inherited form mongoose
-  post: function - constructor
-}
-=======
-// grab the mongo thing
-<<<<<<< 6c66e8dc80797a7f4c638e86a9ce4fc16c071d26
-var Model = require('./mongo');
->>>>>>> Create skeleton for get & post controller
-=======
-=======
-// grab the mongo thing  -  obj is just a container for
->>>>>>> add callback to get and post
-var obj = require('./mongo');
-// console.log(obj);
-/*
-{ profile : function - constructor with find, save, db methods -- inherited form mongoose
-  post: function - constructor
-}
->>>>>>> Create skeleton for profile model controller
 
-*/
 
 exports.profile = {
   get: function(cb) {
 
-    // Grab records from db using the find method inherited from mongoose
-    // on the obj.
-    // obj -- the "super" class with profile and post properties
-    // profile -- property on obj a mongoose model
-    // find -- property from mongoose model that looks for records
     obj.profile.find( function(err, data){
       if(err){
         console.log(err);
