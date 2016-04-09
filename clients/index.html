@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Dog Surfing</title>
+  <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
 </head>
-<body>
+<body ng-app='dogSurfing'>
+  <a ui-sref="home" class="btn btn-primary">home</a>
+  <a ui-sref="profile" class="btn btn-primary">profile</a>
+  <a ui-sref="listings" class="btn btn-primary">listings</a>
+  <a ui-sref="create" class="btn btn-primary">create</a>
+  <div ui-view></div>  
+<script type="text/javascript" src="assets/libs/angular.js"></script>
 
+<script type="text/javascript" src="assets/libs/angular-ui-router.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/common/route.js"></script>
+<script type="text/javascript" src="app/components/main/main.controller.js"></script>
+<script type="text/javascript" src="app/components/listings/listings.controller.js"></script>
+<script type="text/javascript" src="app/components/profile/profile.controller.js"></script>
+<script type="text/javascript" src="app/components/create/create.controller.js"></script>
 </body>
 </html>
