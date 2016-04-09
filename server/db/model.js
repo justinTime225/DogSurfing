@@ -1,20 +1,10 @@
-// grab the mongo thing  -  obj is just a container for
-var obj = require('./mongo');
-// console.log(obj);
-/*
-{ profile : function - constructor with find, save, db methods -- inherited form mongoose
-  post: function - constructor
-}
 
-*/
+var obj = require('./mongo');
+
 
 exports.profile = {
   get: function(cb) {
-    // Grab records from db using the find method inherited from mongoose
-    // on the obj.
-    // obj -- the "super" class with profile and post properties
-    // profile -- property on obj a mongoose model
-    // find -- property from mongoose model that looks for records
+
     obj.profile.find( function(err, data){
       if(err){
         console.log(err);
@@ -70,8 +60,4 @@ var profile = {
   email: 'bob225@gmail.com',
   image: 'some string'
 };
-
-
-// exports.profile.post(profile);
-exports.profile.get();
 
