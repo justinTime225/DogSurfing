@@ -29,6 +29,7 @@ app.post('/profile', function(req, res){
 
 app.post('/post', function(req, res){
   db.post.post(req.body, function(success){
+    console.log('post reached');
     res.send(success);
   });
 });

@@ -41,7 +41,7 @@ exports.post = {
   },
   post: function(inputObj, cb) {
     var post = new obj.post(inputObj);
-    obj.post.save(function(err, data){
+    post.save(function(err, data){
       if(err){
         console.log(err);
       }
