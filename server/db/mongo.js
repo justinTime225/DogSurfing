@@ -18,10 +18,18 @@ var profileSchema = mongoose.Schema({
     unique: true,
     required: true
   },
+  location: {
+    type: String,
+    required: true
+  },
   image: {
     imgURL: {
-      type: String
+      type: String,
     }
+  },
+  about: {
+    type: String,
+    required: true
   }
 });
 

@@ -12,9 +12,16 @@ angular.module('dogSurfing')
     .then(function(result){
       return result.data;
     })
-  }
+  };
+  var addProfile = function (dataObj) {
+    return $http.post('/profile', dataObj)
+      .then(function (result) {
+        return result.data
+      })
+  };
   return {
     createPost: createPost,
-    getListings:getListings
+    getListings:getListings,
+    addProfile: addProfile
   };
 });
