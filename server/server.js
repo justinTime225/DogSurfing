@@ -9,8 +9,13 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-app.get('/profile', function(req, res){
-  db.profile.get(function(dataFromDb){
+app.get('/profile/:email', function(req, res){
+  db.profile.get(req.params.email, function(dataFromDb){
+    res.send(dataFromDb);
+  });
+});
+app.get('/profiles', function(req, res){
+  db.profile.getAll(function(dataFromDb){
     res.send(dataFromDb);
   });
 });

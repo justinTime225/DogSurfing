@@ -12,11 +12,26 @@ angular.module('dogSurfing')
         templateUrl: 'app/components/listings/listings.html',
         controller: 'listingsController'
       })
-      .state('profile', {
-        url:'/profile',
-        templateUrl: 'app/components/profile/profile.html',
-        controller: 'profileController'
+      .state('directory', {
+        url:'/directory',
+        templateUrl: 'app/components/directory/directory.html',
+        controller: 'directoryController',
+        resolve: {
+          getAllProfiles:function(dataFactory){
+            return dataFactory.getAllProfiles();
+          }
+        }
       })
+      .state('profile', {
+        url:'/profile/:email',
+        templateUrl: 'app/components/profile/profile.html',
+        controller: 'profileController',
+        resolve: {
+          getProfile:function(dataFactory, $stateParams){
+          return dataFactory.getProfile($stateParams.email);
+          }
+        }
+      })      
       .state('create', {
         url:'/create',
         templateUrl: 'app/components/create/create.html',

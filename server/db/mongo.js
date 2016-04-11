@@ -23,9 +23,7 @@ var profileSchema = mongoose.Schema({
     required: true
   },
   image: {
-    imgURL: {
-      type: String,
-    }
+    type: String
   },
   about: {
     type: String,
