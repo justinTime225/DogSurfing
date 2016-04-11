@@ -7,7 +7,14 @@ angular.module('dogSurfing')
       return result.data;
     });
   };
+  var getListings = function(){
+    return $http.get('/post')
+    .then(function(result){
+      return result.data;
+    })
+  }
   return {
-    createPost: createPost
+    createPost: createPost,
+    getListings:getListings
   };
 });
