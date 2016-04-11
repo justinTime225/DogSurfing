@@ -1,3 +1,21 @@
 <div>
   You're in the create page
+  <FORM ng-submit="addProfile(name, email, image, location, about)">
+    <div class="form-group">
+      <label for="name">Full name</label><input class="form-control" id="name" required type="text" ng-model="name"/>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label><input class="form-control" id="email" required type="email" ng-model="email"/>
+    </div>
+    <div class="form-group">
+      <label for="image">Image Link</label><input class="form-control" id="image" required type="text" ng-model="image"/>
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label><input class="form-control" id="location" required type="location" ng-model="location"/>
+    </div>
+    <div class="form-group">
+      <label for="about">About</label><textarea class="form-control" id="about" ng-model="about"></textarea>
+    </div>
+    <button type="submit">Submit</button>
+  </FORM>
 </div>
