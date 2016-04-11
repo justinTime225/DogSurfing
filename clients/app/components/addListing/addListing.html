@@ -1,6 +1,6 @@
 <div>
   You're inside addListing.html
-  <FORM>
+  <FORM ng-submit="createPost(name, email, message)">
     <div class="form-group">
       <label for="name">Full name</label><input class="form-control" id="name" required type="text" ng-model="name"/>
     </div>
@@ -10,5 +10,6 @@
     <div class="form-group">
       <label for="message">Message</label><textarea class="form-control" id="message" ng-model="message"></textarea>
     </div>
+    <button type="submit">Submit</button>
   </FORM>
 </div>

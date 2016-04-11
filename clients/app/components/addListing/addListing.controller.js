@@ -4,7 +4,11 @@ angular.module('dogSurfing')
     dataFactory.createPost({name: name, email: email, message: message})
     .then(function(res) {
       console.log(res);
+      $scope.name = '';
+      $scope.email = '';
+      $scope.message = '';
     });
   };
+
 });
 
