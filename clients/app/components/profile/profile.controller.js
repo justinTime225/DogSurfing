@@ -1,4 +1,6 @@
 angular.module('dogSurfing')
-.controller('profileController', function($scope){
+.controller('profileController', function($scope, dataFactory){
+  $scope.getProfile = dataFactory.currentProfile();
+  console.log($scope.getProfile);
 
 });

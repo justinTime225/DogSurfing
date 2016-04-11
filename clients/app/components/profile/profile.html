@@ -1,3 +1,17 @@
-<div>
-  You're in the profile.html
+<div ng-show='getProfile'>
+  <div class="profile-header">
+    <div class="col-sm-4">    
+      <img ng-src="{{getProfile.image}}" alt='profile Image' />
+      <h4>{{getProfile.name}}</h4>      
+    </div>
+    <div class="col-sm-8">      
+        {{getProfile.location}}      
+    </div>    
+  </div>
+  <div>
+    {{getProfile.about}}
+  </div>
+</div>
+<div ng-show='!getProfile'>
+  <h1>Profile not found!!!!!</h1>
 </div>

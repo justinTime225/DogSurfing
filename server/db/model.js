@@ -3,11 +3,18 @@ var obj = require('./mongo');
 
 
 exports.profile = {
-  get: function(cb) {
-
-    obj.profile.find( function(err, data){
+  get: function(email, cb) {
+    obj.profile.findOne({email:email}, function(err, data){
       if(err){
-        console.log(err);
+        cb(err);
+      }
+      cb(data);
+    });
+  },
+  getAll: function(cb) {
+    obj.profile.find(function(err, data){
+      if(err){
+        cb(err);
       }
       cb(data);
     });
