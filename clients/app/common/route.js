@@ -22,4 +22,9 @@ angular.module('dogSurfing')
         templateUrl: 'app/components/create/create.html',
         controller: 'createController'
       })
+      .state('addListing', {
+        url: '/addListing',
+        templateUrl: 'app/components/addListing/addListing.html',
+        controller: 'addListingController'
+      })
   }])
