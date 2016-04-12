@@ -1,2 +1,2 @@
 //Declare module
-angular.module('dogSurfing', ['ui.router'])
+angular.module('dogSurfing', ['ui.router', 'ui.bootstrap'])
