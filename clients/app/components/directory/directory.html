@@ -1,6 +1,9 @@
 <div>
   <div ng-repeat='profile in profiles.data'>
-    <h3>{{profile.name}}</h3>
+    <h4>
+        <a ng-href="#/profile/{{profile.email}}">
+         {{profile.name}}
+        </a></h4>
     <h4>{{profile.email}}</h4>
   </div>
 </div>
