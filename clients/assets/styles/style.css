@@ -1,3 +1,47 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+.main {
+  height: 100vh;
+  width: 100%;
+  animation: main 30s infinite linear;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@keyframes main {
+  0% {
+    background-image: url('/assets/photos/main/Yazoo.jpg');
+  }
+  18% {
+    background-image: url('/assets/photos/main/Yazoo.jpg');
+  }
+  20% {
+    background-image: url('/assets/photos/main/Gio.jpg');
+  }
+  38% {
+    background-image: url('/assets/photos/main/Gio.jpg');
+  }
+  40% {
+    background-image: url('/assets/photos/main/HuskyEye.jpg');
+  }
+  58% {
+    background-image: url('/assets/photos/main/HuskyEye.jpg');
+  }
+  60% {
+    background-image: url('/assets/photos/main/Moxie1.jpg');
+  }
+  78% {
+    background-image: url('/assets/photos/main/Moxie1.jpg');
+  }
+  80% {
+    background-image: url('/assets/photos/main/Poe.jpg');
+  }
+  98% {
+    background-image: url('/assets/photos/main/Poe.jpg');
+  }
+  100% {
+    background-image: url('/assets/photos/main/Yazoo.jpg');
+  }
+}
