@@ -10,4 +10,8 @@ dist/
 
 .gitignore
 clients/app/components/profile/.DS_Store
+clients/.DS_Store
+clients/assets/.DS_Store
+clients/assets/libs/.DS_Store
+clients/assets/photos/main/.DS_Store
 
