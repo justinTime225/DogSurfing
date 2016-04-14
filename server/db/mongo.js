@@ -30,13 +30,8 @@ var profileSchema = mongoose.Schema({
     required: true
   },
   events: [{
-    year: Number,
-    month: Number,
-    day: Number,
-    event: {
-      date: String,
-      title: String
-    }
+    date: String,
+    title: String
   }]
 });
 
