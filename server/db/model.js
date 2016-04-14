@@ -32,6 +32,20 @@ exports.profile = {
         cb('Post successful');
       }
     });
+  },
+  updateEvent: function(email, inputObj, cb) {
+    console.log('inside controller');
+    // console.log(inputObj.eventArray);
+    var query = {email: email};
+    var options = {multi: true};
+    obj.profile.findOneAndUpdate(query, {events: inputObj.eventArray}, function(err, data) {
+      if (err) {
+        console.log('there is an error with updating', err);
+      } else {
+        console.log('running update');
+        cb(data);
+      }
+    });
   }
 };
 
@@ -60,25 +74,4 @@ exports.post = {
   }
 };
 
-
-
-var profile = {
-  name: 'larry',
-  email: 'larry@gmail.com',
-  location: 'orange county',
-  image: 'some string',
-  about: 'some info about me',
-  events: [{
-    year: 2016,
-    month: 4,
-    day: 21,
-    event: {
-      date: 'Sat Apr 16 2016 00:00:00 GMT-0700 (PDT)',
-      title: 'Available'
-    }
-  }]
-};
-exports.profile.post(profile, function(data) {
-  console.log(data);
-});
 
