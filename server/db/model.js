@@ -63,8 +63,22 @@ exports.post = {
 
 
 var profile = {
-  name: 'bob',
-  email: 'bob225@gmail.com',
-  image: 'some string'
+  name: 'larry',
+  email: 'larry@gmail.com',
+  location: 'orange county',
+  image: 'some string',
+  about: 'some info about me',
+  events: [{
+    year: 2016,
+    month: 4,
+    day: 21,
+    event: {
+      date: 'Sat Apr 16 2016 00:00:00 GMT-0700 (PDT)',
+      title: 'Available'
+    }
+  }]
 };
+exports.profile.post(profile, function(data) {
+  console.log(data);
+});
 
