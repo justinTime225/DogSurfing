@@ -1,17 +1,24 @@
 angular.module('dogSurfing')
-.controller('profileController', function($scope, dataFactory){
+.controller('profileController', function($scope, dataFactory, profileFact){
   $scope.getProfile = dataFactory.currentProfile();
-  console.log($scope.getProfile);
-
+  console.log($scope.getProfile.email);
+  $scope.events = [
+    {title: 'Available', date: new Date([2016, 4, 21])},
+    {title: 'Available', date: new Date([2016, 4, 4])}
+  ];
+  $scope.saveCalendar = function() {
+    console.log('save Calendar');
+    var eventObj = {eventArray: $scope.events};
+    // go to db and modify the events array (replace it with $scope.savedEvents)
+    profileFact.updateData($scope.getProfile.email, eventObj);
+  };
   $scope.dateClick = function(a) {
-    
-    // when a date is click add an event to it
+    // send the event object to db
     var event = {
       title: 'Available',
       date: new Date([a.year, a.month + 1, a.day])
     };
     a.event = event;
-    // console.log(event);
     $scope.events.push(event);
     console.log($scope.events);
   };
@@ -26,7 +33,6 @@ angular.module('dogSurfing')
     }
     console.log($scope.events);
     delete a.event;
-
   };
   $scope.calendarOptions = {
     defaultDate: new Date(), //"2016-4-13",
@@ -38,7 +44,33 @@ angular.module('dogSurfing')
     eventClick: $scope.eventClick,
     dateClick: $scope.dateClick
   };
+  // when it fetches data load up the events in $scope.events
+  
+  // get
+});
 
-  $scope.events = [];
-
+angular.module('dogSurfing')
+.factory('profileFact', function($http) {
+  var getData = function() {
+    // fetch all data and populate events before page loads
+    return $http.get('/profiles')
+    .then(function(res) {
+      console.log(res.data);
+      return res.data;
+    });
+  };
+  var updateData = function(email, obj) {
+    // go find user by their email and replace their events prop
+    console.log(email);
+    console.log(obj);
+    return $http.post('/profiles/:' + email, obj)
+    .then(function(res) {
+      console.log(res.data);
+      // getData() // call get data after db is modified
+    });
+  };
+  return {
+    getData: getData,
+    updateData: updateData
+  };
 });
