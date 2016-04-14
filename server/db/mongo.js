@@ -28,7 +28,16 @@ var profileSchema = mongoose.Schema({
   about: {
     type: String,
     required: true
-  }
+  },
+  events: [{
+    year: Number,
+    month: Number,
+    day: Number,
+    event: {
+      date: String,
+      title: String
+    }
+  }]
 });
 
 var postSchema = mongoose.Schema({
@@ -47,23 +56,7 @@ var postSchema = mongoose.Schema({
   }
 });
 
-// var Car = function(color) {
-//   this.color = red;
-// };
 
-// exports.myCar = new Car('red');
-// a model can only be created if it is given a schema/blueprint
-// we are exporting the constructors as .profile and .post
-// which contian mongoos methods
-
-// var Car = function(color) {
-//   this.color = red;
-// };
-
-// exports.myCar = new Car('red');
-// a model can only be created if it is given a schema/blueprint
-// we are exporting the constructors as .profile and .post
-// with mongoos methods
 
 
 exports.profile = mongoose.model('Profile', profileSchema);
