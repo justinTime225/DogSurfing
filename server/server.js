@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 app.get('/profile/:email', function(req, res){
+  console.log(req.params.email);
   db.profile.get(req.params.email, function(dataFromDb){
     res.send(dataFromDb);
   });
@@ -29,6 +30,12 @@ app.get('/post', function(req, res){
 app.post('/profile', function(req, res){
   db.profile.post(req.body, function(data){
     res.send(data);
+  });
+});
+app.put('/profile/:email', function(req, res) {
+  db.profile.updateEvent(req.params.email, req.body, function(data) {
+    console.log(data);
+    res.send('got it'); 
   });
 });
 
