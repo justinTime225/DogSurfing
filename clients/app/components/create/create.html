@@ -1,6 +1,6 @@
 <div>
   You're in the create page
-  <FORM ng-submit="addProfile(name, email, image, location, about)">
+  <FORM name='myForm' ng-submit="uploadPic(file, name, email, location, about)">
     <div class="form-group">
       <label for="name">Full name</label>
       <input class="form-control" id="name" required type="text" ng-model="name"/>
@@ -10,15 +10,13 @@
       <input class="form-control" id="email" required type="email" ng-model="email"/>
     </div>
     <div class="form-group">
-      <label for="location">Location</label>
-      <input class="form-control" id="location" required type="location" ng-model="location"/>
-    </div>
-    <div class="form-group">
-      <label for="location">Location</label>
+    <label for="location">Location</label>
       <input class="form-control" id="location" ng-model='location' placeholder="Enter your address" type="text" googleplace/>
+    </div>
+    <div class='form-group'>
     <label for="picFile">Image</label>
-      <input type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
-      <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+      <input id='picFile' type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+      <p ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</p>
       <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
       <button ng-click="picFile = null" ng-show="picFile">Remove</button>
       <span class="progress" ng-show="picFile.progress >= 0">
