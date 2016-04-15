@@ -2,11 +2,11 @@ angular.module('dogSurfing')
 .controller('createController', function($scope, dataFactory){
   $scope.gPlaceDetails;
   $scope.addProfile = function (name, email, image, location, about) {
-    var test = $scope.gPlaceDetails;
+    var temp = $scope.gPlaceDetails;
     var loc = {
       location:location,
-      lat:test.geometry.location.lat(),
-      lng:test.geometry.location.lng()
+      lat:temp.geometry.location.lat(),
+      lng:temp.geometry.location.lng()
     };
     var data = {
       name: name,
