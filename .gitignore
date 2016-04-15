@@ -15,3 +15,6 @@ clients/assets/.DS_Store
 clients/assets/libs/.DS_Store
 clients/assets/photos/main/.DS_Store
 
+.DS_Store
+clients/assets/img/profile/
+

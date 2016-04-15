@@ -16,38 +16,62 @@ body {
 
 @keyframes main {
   0% {
-    background-image: url('/assets/photos/main/Yazoo.jpg');
+    background-image: url('/assets/img/Yazoo.jpg');
   }
   18% {
-    background-image: url('/assets/photos/main/Yazoo.jpg');
+    background-image: url('/assets/img/Yazoo.jpg');
   }
   20% {
-    background-image: url('/assets/photos/main/Gio.jpg');
+    background-image: url('/assets/img/Gio.jpg');
   }
   38% {
-    background-image: url('/assets/photos/main/Gio.jpg');
+    background-image: url('/assets/img/Gio.jpg');
   }
   40% {
-    background-image: url('/assets/photos/main/HuskyEye.jpg');
+    background-image: url('/assets/img/HuskyEye.jpg');
   }
   58% {
-    background-image: url('/assets/photos/main/HuskyEye.jpg');
+    background-image: url('/assets/img/HuskyEye.jpg');
   }
   60% {
-    background-image: url('/assets/photos/main/Moxie1.jpg');
+    background-image: url('/assets/img/Moxie1.jpg');
   }
   78% {
-    background-image: url('/assets/photos/main/Moxie1.jpg');
+    background-image: url('/assets/img/Moxie1.jpg');
   }
   80% {
-    background-image: url('/assets/photos/main/Poe.jpg');
+    background-image: url('/assets/img/Poe.jpg');
   }
   98% {
-    background-image: url('/assets/photos/main/Poe.jpg');
+    background-image: url('/assets/img/Poe.jpg');
   }
   100% {
-    background-image: url('/assets/photos/main/Yazoo.jpg');
+    background-image: url('/assets/img/Yazoo.jpg');
   }
 }
 
+.thumb {
+    width: 24px;
+    height: 24px;
+    float: none;
+    position: relative;
+    top: 7px;
+}
+
+form .progress {
+    line-height: 15px;
+}
+}
+
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
 
