@@ -35,5 +35,15 @@ angular.module('dogSurfing')
     eventClick: $scope.eventClick,
     dateClick: $scope.dateClick
   };
+
+  //map
+  $scope.map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: $scope.getProfile.location.lat, lng: $scope.getProfile.location.lng},
+          zoom: 14
+        });
+  $scope.marker = new google.maps.Marker({
+    position: {lat: $scope.getProfile.location.lat, lng: $scope.getProfile.location.lng},
+    map:$scope.map         
+        });
 });
 

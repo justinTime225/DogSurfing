@@ -5,7 +5,7 @@
       <h4>{{getProfile.name}}</h4>  
     </div>
     <div class="col-sm-8">      
-        {{getProfile.location}}      
+        {{getProfile.location.location}}      
     </div>
   </div>
   <div>
@@ -15,7 +15,10 @@
 <div ng-show='!getProfile'>
   <h1>Profile not found!!!!!</h1>
 </div>
-
-<simple-calendar events="events" class="calendar"  options="calendarOptions"></simple-calendar>
-<input type="text" ng-model="title">
-<button ng-click="saveCalendar()">Save Calendar Events</button>
+<div id="map" class="clearfix">  
+</div>
+<div class="clearfix">
+  <simple-calendar events="events" class="calendar"  options="calendarOptions"></simple-calendar>
+  <input type="text" ng-model="title">
+  <button ng-click="saveCalendar()">Save Calendar Events</button>  
+</div>

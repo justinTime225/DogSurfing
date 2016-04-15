@@ -19,8 +19,9 @@ var profileSchema = mongoose.Schema({
     required: true
   },
   location: {
-    type: String,
-    required: true
+    location: {type:String, required:true},
+    lat:Number,
+    lng: Number
   },
   image: {
     type: String

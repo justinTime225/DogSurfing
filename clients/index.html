@@ -13,15 +13,18 @@
   <a ui-sref="listings" class="btn btn-primary">listings</a>
   <a ui-sref="create" class="btn btn-primary">create</a>
   <a ui-sref="addListing" class="btn btn-primary">add listing</a>
-  <div ui-view></div>  
-
+  <div ui-view></div>
+    
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhTFSqImyUdqwKMeIcMzucwHlHCU16Gcw&libraries=places"></script>
 <script type="text/javascript" src="assets/libs/angular.js"></script>
 <script type="text/javascript" src="assets/libs/angular-ui-router.js"></script>
-<script type="text/javascript" src="assets/directives/angular-simple-calendar.js"></script>
 <script type="text/javascript" src='assets/libs/ui-bootstrap-tpls-1.3.1.js'></script>
 <script type="text/javascript" src="app/app.js"></script>
 <script type="text/javascript" src="app/route.js"></script>
 <script type="text/javascript" src="assets/factory/dataFactory.js"></script>
+
+<script type="text/javascript" src="assets/directives/angular-simple-calendar.js"></script>
+<script type="text/javascript" src="assets/directives/googlePlace.js"></script>
 <script type="text/javascript" src="app/components/main/main.controller.js"></script>
 
 <script type="text/javascript" src="app/components/listings/listings.controller.js"></script>
