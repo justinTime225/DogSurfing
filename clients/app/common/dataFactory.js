@@ -5,7 +5,6 @@ angular.module('dogSurfing')
   var createPost = function(dataObj) {
     return $http.post('/post', dataObj)
     .then(function(result) {
-      console.log('result is returned');
       return result.data;
     });
   };
@@ -13,13 +12,13 @@ angular.module('dogSurfing')
     return $http.get('/post')
     .then(function(result){
       return result.data;
-    })
+    });
   };
   var addProfile = function (dataObj) {
     return $http.post('/profile', dataObj)
       .then(function (result) {
-        return result.data
-      })
+        return result.data;
+      });
   };
   var getProfile = function (email){
     return $http.get('/profile/'+ email)
@@ -36,6 +35,12 @@ angular.module('dogSurfing')
   var getCurrent = function(){
     return currentProfile;
   };
+  var updateCalendar = function(email, obj) {
+    return $http.put('/profile/' + email, obj)
+    .then(function(res) {
+      return res.data;
+    });
+  };
   return {
     createPost: createPost,
     getListings:getListings,
@@ -43,6 +48,7 @@ angular.module('dogSurfing')
     getProfile:getProfile,
     currentProfile:getCurrent,
     getAllProfiles:getAllProfiles,
-    getProfiles: allProfiles
+    getProfiles: allProfiles,
+    updateCalendar: updateCalendar
   };
 });
