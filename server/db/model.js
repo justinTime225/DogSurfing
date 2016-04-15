@@ -20,8 +20,6 @@ exports.profile = {
     });
   },
   post: function(inputObj, cb) {
-    // create an instance of a profile so the data pertains to the profile
-    // property on obj
     var user = new obj.profile(inputObj);
     //instance of the profile we can save to db
     user.save( function(err, data){
@@ -34,15 +32,11 @@ exports.profile = {
     });
   },
   updateEvent: function(email, inputObj, cb) {
-    console.log('inside controller');
-    // console.log(inputObj.eventArray);
     var query = {email: email};
-    var options = {multi: true};
     obj.profile.findOneAndUpdate(query, {events: inputObj.eventArray}, function(err, data) {
       if (err) {
         console.log('there is an error with updating', err);
       } else {
-        console.log('running update');
         cb(data);
       }
     });
@@ -69,7 +63,6 @@ exports.post = {
       if(data){
         cb('Post successful');
       }
-
     });
   }
 };
