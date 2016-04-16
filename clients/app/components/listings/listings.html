@@ -1,15 +1,12 @@
-<div>
-  You are inside Listings.html
-  <div>Banner</div>
-  <div class="container">
-    <h1>View Listings/Posts</h1>
-    <div class="listing-tile" ng-repeat="listing in listings">
-      <h4>
-        <a ng-href="#/profile/{{listing.email}}">
-         {{listing.name}}
-        </a></h4>
-      <h5>{{listing.email}}</h5>
-      <p>{{listing.message}}</p>
-    </div>    
-  </div>
+<div class="container">
+  <h1 class="listing-header">View Listings/Posts</h1>
+  <div class="listing-tile" ng-repeat="listing in listings | orderBy: 'name'" ng-class="{'listing-tile--alt': $last}" class='listing-tile'>
+    <h4>
+      <a ng-href="#/profile/{{listing.email}}" >
+       {{listing.name}}
+      </a>
+      <span class="pull-right listing-subheader">Email: {{listing.email}}</span>
+    </h4>
+    {{listing.message}}
+  </div>    
 </div>
