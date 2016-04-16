@@ -7,15 +7,16 @@ angular.module('dogSurfing')
     // go to db and modify the events array (replace it with $scope.savedEvents)
     dataFactory.updateCalendar($scope.getProfile.email, eventObj);
   };
+  $scope.title = {};
   $scope.dateClick = function(a) {
-    $scope.title = $scope.title || 'Available';
+    $scope.title.message = $scope.title.message || 'Available';
     var event = {
-      title: $scope.title,
+      title: $scope.title.message,
       date: new Date([a.year, a.month + 1, a.day])
     };
     a.event = event;
     $scope.events.push(event);
-    $scope.title = '';
+    $scope.title.message = '';
   };
   $scope.eventClick = function(a) {
     for (var i = 0; i < $scope.events.length; i++) {
