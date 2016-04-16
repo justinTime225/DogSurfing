@@ -1,24 +1,28 @@
-<div ng-show='getProfile'>
+<div class="profile" ng-show='getProfile' ng-init="getProfile.select = 'about'">
   <div class="profile-header">
-    <div class="col-sm-4">    
-      <img ng-src="assets/img/profile/{{getProfile.image}}" alt='profile Image' />
-      <h4>{{getProfile.name}}</h4>  
+    <div class="col-xs-12 col-sm-4 text-center">    
+      <img ng-src="assets/img/profile/{{getProfile.image}}" alt='profile Image' class="profile-header__img"/>
+      <h4>{{getProfile.name}}</h4>
+      <h5><a href="mailto:{{getProfile.email}}">{{getProfile.email}}</a></h5>  
     </div>
-    <div class="col-sm-8">      
-        {{getProfile.location.location}}      
+    <div class="col-xs-12 col-sm-8">
+      <uib-tabset active="activeJustified" justified="true">
+        <uib-tab index="0" heading="About">
+          {{getProfile.about}}
+        </uib-tab>
+        <uib-tab index="1" heading="Availability">
+          <simple-calendar events="events" class="calendar"  options="calendarOptions"></simple-calendar>
+          <input type="text" ng-model="title">
+          <button ng-click="saveCalendar()">Save Calendar Events</button>
+        </uib-tab>
+        <uib-tab index="2" heading="Location" select='createMap()'>
+          <div id="map" class="clearfix"></div>
+        </uib-tab>
+      </uib-tabset>      
     </div>
-  </div>
-  <div>
-    {{getProfile.about}}
   </div>
 </div>
 <div ng-show='!getProfile'>
   <h1>Profile not found!!!!!</h1>
 </div>
-<div id="map" class="clearfix">  
-</div>
-<div class="clearfix">
-  <simple-calendar events="events" class="calendar"  options="calendarOptions"></simple-calendar>
-  <input type="text" ng-model="title">
-  <button ng-click="saveCalendar()">Save Calendar Events</button>  
-</div>
+

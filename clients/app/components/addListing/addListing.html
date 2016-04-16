@@ -1,15 +1,22 @@
-<div>
-  You're inside addListing.html
-  <FORM ng-submit="createPost(name, email, message)">
-    <div class="form-group">
+<div class="container">
+  <FORM ng-submit="createPost(name, email, message)" class="create-form">
+  <legend class="create-header">Create a Listing</legend>
+  <p>
+    <span class="required">*</span>
+    All Fields Required
+  </p>
+  <div class="row">
+    <div class="form-group col-sm-6">
       <label for="name">Full name</label><input class="form-control" id="name" required type="text" ng-model="name"/>
     </div>
-    <div class="form-group">
+    <div class="form-group col-sm-6">
       <label for="email">Email</label><input class="form-control" id="email" required type="email" ng-model="email"/>
-    </div>
-    <div class="form-group">
-      <label for="message">Message</label><textarea class="form-control" id="message" ng-model="message"></textarea>
-    </div>
-    <button type="submit">Submit</button>
+    </div>    
+  </div>  
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea rows="5" class="form-control" id="message" ng-model="message"></textarea>
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </FORM>
 </div>

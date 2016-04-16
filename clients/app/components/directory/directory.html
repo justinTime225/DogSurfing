@@ -1,9 +1,16 @@
-<div>
-  <div ng-repeat='profile in profiles.data'>
-    <h4>
+<div class="container view-wrap">
+  <h1>User Directory</h1>
+  <div ng-repeat="profile in profiles.data | orderBy: 'name'" ng-class="{'directory-tile--alt': $last}" class="directory-tile clearfix">
+    <div class="directory-img">
+      <img ng-src="assets/img/profile/{{profile.image}}" alt='{{profile.name}} profile'>
+    </div>
+    <div class='directory-body'>
+      <h4>
         <a ng-href="#/profile/{{profile.email}}">
-         {{profile.name}}
-        </a></h4>
-    <h4>{{profile.email}}</h4>
+           {{profile.name}}
+        </a>
+      </h4>
+      <h5>{{profile.location.location}}</h5>   
+    </div>
   </div>
 </div>

@@ -35,15 +35,22 @@ angular.module('dogSurfing')
     eventClick: $scope.eventClick,
     dateClick: $scope.dateClick
   };
+  $scope.createdMap = false;
+  $scope.createMap = function (){
+    if ($scope.createdMap === true){
+    return      
+    } else { 
+      $scope.map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: $scope.getProfile.location.lat, lng: $scope.getProfile.location.lng},
+              zoom: 14
+            });
+      $scope.marker = new google.maps.Marker({
+        position: {lat: $scope.getProfile.location.lat, lng: $scope.getProfile.location.lng},
+        map:$scope.map         
+            });
+      $scope.createdMap = true;      
+    }
+  };
 
-  //map
-  $scope.map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: $scope.getProfile.location.lat, lng: $scope.getProfile.location.lng},
-          zoom: 14
-        });
-  $scope.marker = new google.maps.Marker({
-    position: {lat: $scope.getProfile.location.lat, lng: $scope.getProfile.location.lng},
-    map:$scope.map         
-        });
 });
 
