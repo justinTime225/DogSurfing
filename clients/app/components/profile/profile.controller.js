@@ -38,6 +38,7 @@ angular.module('dogSurfing')
   };
   $scope.createdMap = false;
   $scope.createMap = function (){
+    $scope.selection = 3;
     if ($scope.createdMap === true){
     return      
     } else { 
