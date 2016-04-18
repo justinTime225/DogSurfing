@@ -5,6 +5,11 @@ var app = express();
 var bodyParser = require('body-parser');
 var multer  = require('multer');
 var upload = multer({ dest: __dirname + '/../clients/assets/img/profile/' });
+var bcrypt = require('bcrypt-nodejs');
+var session = require('express-session');
+var jwt = require('jwt-simple');
+var secret = 'thisisdoge';
+// app.use(session({secret: 'abc'}));
 
 app.use(express.static(__dirname + '/../clients'));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
@@ -32,8 +37,11 @@ app.get('/post', function(req, res){
 
 app.post('/profile', upload.single('file'), function(req, res){
   req.body.image = req.file.filename;
-  db.profile.post(req.body, function(data){
-    res.status(201).send(data);
+  db.profile.post(req.body, function(data2, status){
+    if (status === 201) {
+      var token = jwt.encode(data2.name, secret);
+    }
+    res.status(status).send({data: data2, token: token});
   });
 });
 
@@ -49,11 +57,6 @@ app.post('/post', function(req, res){
     res.status(201).send(success);
   });
 });
-
-app.get('/uploads/:id/image/:mimetype', function (req, res) {
-  var id = req.params.id
-  console.log('*************id: ' + JSON.stringify(req.params));
-})
 
 app.listen(5000, function(){
   console.log('listening on port 5000');

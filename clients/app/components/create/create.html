@@ -1,5 +1,5 @@
 <div class="container">
-  <FORM name='myForm' ng-submit="uploadPic(picFile, name, email, location, about)" class="create-form">
+  <FORM name='myForm' ng-submit="uploadPic(picFile, name, password, email, location, about)" class="create-form">
   <legend class="create-header">Create a Profile</legend>
   <p>
     <span class="required">*</span>
@@ -10,6 +10,10 @@
       <div class="form-group">
         <label for="name">Full name</label>
         <input class="form-control" id="name" required type="text" ng-model="name"/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" id="password" required type="text" ng-model="password"/>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
@@ -31,6 +35,7 @@
         <span ng-show="picFile.result">Upload Successful</span>
         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
       </div>    
+  </div>
     <div class="col-sm-6">
       <div class="form-group">
         <label for="about">About</label>
@@ -40,6 +45,5 @@
         <button type="submit" class="btn btn-primary">Submit</button>          
       </div>
     </div>
-  </div>
   </FORM>
 </div>

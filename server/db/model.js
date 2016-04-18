@@ -4,7 +4,7 @@ var obj = require('./mongo');
 
 exports.profile = {
   get: function(email, cb) {
-    obj.profile.findOne({email:email}, function(err, data){
+    obj.profile.findOne({email:email}, {password: 0}, function(err, data){
       if(err){
         cb(err);
       }
@@ -12,7 +12,12 @@ exports.profile = {
     });
   },
   getAll: function(cb) {
-    obj.profile.find(function(err, data){
+    obj.profile.find({}, {
+      name: 1,
+      email: 1,
+      location: 1,
+      image: 1
+    }, function(err, data){
       if(err){
         cb(err);
       }
@@ -20,15 +25,18 @@ exports.profile = {
     });
   },
   post: function(inputObj, cb) {
+    // check if name and email already exist in db
+
     var user = new obj.profile(inputObj);
     //instance of the profile we can save to db
     user.save( function(err, data){
       if(err){
-        console.log(err);
+        cb('this username and/or email is already in use', 202);
       }
-      if(data){
-        cb('Post successful');
+      else {
+        cb(data, 201);
       }
+      
     });
   },
   updateEvent: function(email, inputObj, cb) {
