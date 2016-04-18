@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
 // var restful = require('node-restful');
 mongoose.connect('mongodb://localhost/greenfield');
 
@@ -10,6 +11,11 @@ db.once('open', function() {
 
 var profileSchema = mongoose.Schema({
   name: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
     type: String,
     required: true
   },
@@ -52,6 +58,22 @@ var postSchema = mongoose.Schema({
   }
 });
 
+profileSchema.pre('save', function(next) {
+  var user = this;
+
+  bcrypt.genSalt(10, function(err, salt) {
+    if (err) {
+      return next(err);
+    }
+    bcrypt.hash(user.password, salt, null, function(err, hash) {
+      if (err) {
+        return next(err);
+      }
+      user.password = hash;
+      next();
+    });
+  });
+});
 
 
 

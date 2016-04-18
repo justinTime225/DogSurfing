@@ -1,6 +1,12 @@
 angular.module('dogSurfing')
-.controller('profileController', function($scope, dataFactory){
+.controller('profileController', function($scope, dataFactory, $window){
+  $scope.canEdit = false;
   $scope.getProfile = dataFactory.currentProfile();
+  var currentName = $window.sessionStorage.getItem('dogSurfingName');
+  var currentToken = !!$window.sessionStorage.getItem('dogSurfingToken');
+  if (currentName === $scope.getProfile.name && currentToken) {
+    $scope.canEdit = true;
+  } 
   $scope.events = $scope.getProfile.events;
   $scope.saveCalendar = function() {
     var eventObj = {eventArray: $scope.events};

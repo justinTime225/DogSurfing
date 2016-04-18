@@ -1,18 +1,8 @@
 angular.module('dogSurfing')
-// .controller('createController', function($scope, dataFactory){
-//   $scope.gPlaceDetails;
-//   $scope.addProfile = function (name, email, image, location, about) {
-//     var loc = {
-//       location:location,
-//       lat:temp.geometry.location.lat(),
-//       lng:temp.geometry.location.lng()
-//     };
-//     dataFactory.addProfile(data)
-//       .then(function (result) {
-//         console.log("You have a result: " + result);
-.controller('createController', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
+.controller('createController', ['$scope', 'Upload', '$timeout', '$window', '$location',
+  function ($scope, Upload, $timeout, $window, $location) {
     $scope.gPlaceDetails;
-    $scope.uploadPic = function(file, name, email, location, about) {
+    $scope.uploadPic = function(file, name, password, email, location, about) {
     var temp = $scope.gPlaceDetails;
     var loc = {
       location:location,
@@ -23,22 +13,30 @@ angular.module('dogSurfing')
       url: '/profile',
       data: {
         name: name,
+        password: password,
         email: email,
         location: loc,
         about: about, 
-        file: file}
+        file: file
+      }
     });
 
     file.upload.then(function (response) {
+      console.log('this is the response');
+      if (response.data.token) {
+        $window.sessionStorage.setItem('dogSurfingToken', response.data.token);
+        $window.sessionStorage.setItem('dogSurfingName', $scope.name);
+        $location.path('/directory');
+      }
       $timeout(function () {
         file.result = response.data;
       });
     }, function (response) {
       if (response.status > 0)
         $scope.errorMsg = response.status + ': ' + response.data;
-    }, function (evt) {
-      // Math.min is to fix IE which reports 200% sometimes
-      file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-    });
-    }
+      }, function (evt) {
+        // Math.min is to fix IE which reports 200% sometimes
+        file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+      });
+    };
 }]);

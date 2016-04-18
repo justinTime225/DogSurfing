@@ -4,6 +4,7 @@
       <img ng-src="assets/img/profile/{{getProfile.image}}" alt='profile Image' class="profile-header__img"/>
       <h4>{{getProfile.name}}</h4>
       <h5><a href="mailto:{{getProfile.email}}">{{getProfile.email}}</a></h5>  
+      <button ng-show="canEdit" class="btn btn-primary">Edit</button>
     </div>
     <div class="col-xs-12 col-sm-8">
       <div class="profile-tab clearfix" ng-init='selection = 1'>
