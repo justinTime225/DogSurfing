@@ -6,19 +6,26 @@
       <h5><a href="mailto:{{getProfile.email}}">{{getProfile.email}}</a></h5>  
     </div>
     <div class="col-xs-12 col-sm-8">
-      <uib-tabset active="activeJustified" justified="true">
-        <uib-tab index="0" heading="About">
+      <div class="profile-tab clearfix" ng-init='selection = 1'>
+        <ul class="profile-tab__menu">
+          <li ng-click='selection = 1' class="profile-tab__menu__item col-xs-4" ng-class="{'profile-tab__menu__item--active': selection === 1}">About</li>
+          <li ng-click='selection = 2' class="profile-tab__menu__item col-xs-4" ng-class="{'profile-tab__menu__item--active': selection === 2}">Calender</li>
+          <li ng-click='createMap()' class="profile-tab__menu__item col-xs-4" ng-class="{'profile-tab__menu__item--active': selection === 3}">Location</li>
+        </ul>        
+      </div>
+      <div class="profile-tab__body">
+        <div ng-show='selection === 1'>
           {{getProfile.about}}
-        </uib-tab>
-        <uib-tab index="1" heading="Availability">
+        </div>
+        <div ng-show='selection === 2'>
           <simple-calendar events="events" class="calendar"  options="calendarOptions"></simple-calendar>
           <input type="text" ng-model="title.message">
           <button ng-click="saveCalendar()">Save Calendar Events</button>
-        </uib-tab>
-        <uib-tab index="2" heading="Location" select='createMap()'>
+        </div>
+        <div ng-show='selection === 3'>
           <div id="map" class="clearfix"></div>
-        </uib-tab>
-      </uib-tabset>      
+        </div>        
+      </div>          
     </div>
   </div>
 </div>
