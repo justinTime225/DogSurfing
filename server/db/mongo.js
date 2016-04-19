@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 // var restful = require('node-restful');
-var port = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/greenfield';
+// var port = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/greenfield';
+var mongoURI = process.env.MONGOLAB_URI;
+var port = mongoURI ? mongoURI + '/restful': 'mongodb://localhost:27017/greenfield';
 mongoose.connect(port);
 
 var db = mongoose.connection;
