@@ -1,6 +1,12 @@
 angular.module('dogSurfing')
-.controller('createController', ['$scope', 'Upload', '$timeout', '$window', '$location',
-  function ($scope, Upload, $timeout, $window, $location) {
+.controller('createController', ['$scope', 'Upload', '$timeout', '$window', '$location','dataFactory',
+  function ($scope, Upload, $timeout, $window, $location, dataFactory) {
+    $scope.isAuth = dataFactory.getAuth();
+    $scope.logout = function(){
+    dataFactory.clearStorage();
+    $scope.canEdit = false;
+    $scope.isAuth = false;
+  };
     $scope.gPlaceDetails;
     $scope.uploadPic = function(file, name, password, email, location, about) {
     var temp = $scope.gPlaceDetails;

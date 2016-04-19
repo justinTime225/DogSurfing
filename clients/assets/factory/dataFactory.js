@@ -1,5 +1,5 @@
 angular.module('dogSurfing')
-.factory('dataFactory', function($http) {
+.factory('dataFactory', function($http, $window) {
   var currentProfile;
   var allProfiles = {};
   var createPost = function(dataObj) {
@@ -14,8 +14,8 @@ angular.module('dogSurfing')
       return result.data;
     });
   };
-  var addProfile = function (dataObj) {
-    return $http.post('/profile', dataObj)
+  var updateProfile = function (email, dataObj) {
+    return $http.put('/profile/' + email, dataObj)
       .then(function (result) {
         return result.data;
       });
@@ -41,14 +41,32 @@ angular.module('dogSurfing')
       return res.data;
     });
   };
+  var getAuth = function (){
+    if ($window.sessionStorage.dogSurfingName && $window.sessionStorage.dogSurfingToken){
+      return true;
+    }
+    return false;
+  };
+  var signIn = function(obj){
+    return $http.post('/login', obj)
+    .then(function(result){
+      return result.data;
+    });
+  };  
+  var clearStorage = function(){
+    $window.sessionStorage.clear();
+  };
   return {
     createPost: createPost,
     getListings:getListings,
-    addProfile: addProfile,
+    updateProfile: updateProfile,
     getProfile:getProfile,
     currentProfile:getCurrent,
     getAllProfiles:getAllProfiles,
     getProfiles: allProfiles,
-    updateCalendar: updateCalendar
+    updateCalendar: updateCalendar,
+    getAuth:getAuth,
+    signIn:signIn,
+    clearStorage:clearStorage
   };
 });
