@@ -1,4 +1,4 @@
-
+var bcrypt = require('bcrypt-nodejs')
 var obj = require('./mongo');
 
 
@@ -39,6 +39,16 @@ exports.profile = {
       
     });
   },
+  updateAll: function(email, values, cb) {
+    var query = {email: email};
+    obj.profile.findOneAndUpdate(query, values,{password:0}, function(err, data) {
+      if (err) {
+        cb(400, err);
+      } else {
+        cb(201, data);
+      }
+    });
+  },
   updateEvent: function(email, inputObj, cb) {
     var query = {email: email};
     obj.profile.findOneAndUpdate(query, {events: inputObj.eventArray}, function(err, data) {
@@ -46,6 +56,19 @@ exports.profile = {
         console.log('there is an error with updating', err);
       } else {
         cb(data);
+      }
+    });
+  },
+  Auth: function(input, cb) {
+    var query = {name: input.name};
+    console.log('in auth function' + input);
+    obj.profile.findOne(query, function(err, data) {
+      if (err) {
+        console.log('there is an error with updating', err);
+      } else {
+        console.log('about to bcrypt this data fo sho');
+        console.log(data);
+        cb(bcrypt.compareSync(input.password, data.password));        
       }
     });
   }

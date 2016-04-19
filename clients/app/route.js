@@ -37,6 +37,11 @@ angular.module('dogSurfing')
         templateUrl: 'app/components/create/create.html',
         controller: 'createController'
       })
+      .state('signin', {
+        url:'/signin',
+        templateUrl: 'app/components/signin/signin.html',
+        controller: 'signInController'
+      })
       .state('addListing', {
         url: '/addListing',
         templateUrl: 'app/components/addListing/addListing.html',

@@ -1,3 +1,4 @@
+<button ng-show='isAuth' ng-click='logout()' class="btn btn-primary logout-btn">Logout</button>
 <div class="container view-wrap">
   <h1>User Directory</h1>
   <div ng-repeat="profile in profiles.data | orderBy: 'name'" ng-class="{'directory-tile--alt': $last}" class="directory-tile clearfix">

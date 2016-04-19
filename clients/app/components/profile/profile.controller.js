@@ -1,6 +1,13 @@
 angular.module('dogSurfing')
-.controller('profileController', function($scope, dataFactory, $window){
+.controller('profileController', function($scope, dataFactory, $window, $state){
+  $scope.gPlaceDetails;
+  $scope.isAuth = dataFactory.getAuth();
   $scope.canEdit = false;
+  $scope.logout = function(){
+    dataFactory.clearStorage();
+    $scope.canEdit = false;
+    $scope.isAuth = false;
+  };
   $scope.getProfile = dataFactory.currentProfile();
   var currentName = $window.sessionStorage.getItem('dogSurfingName');
   var currentToken = !!$window.sessionStorage.getItem('dogSurfingToken');
@@ -59,6 +66,23 @@ angular.module('dogSurfing')
       $scope.createdMap = true;      
     }
   };
+  
+  $scope.updateProfile = function(email, location, about){
+    var temp = $scope.gPlaceDetails;
+    var loc = {
+      location:location,
+      lat:temp.geometry.location.lat(),
+      lng:temp.geometry.location.lng()
+    };
+    var newData = {location:loc, about:about};
 
+    dataFactory.updateProfile(email, newData)
+    .then(function(data){
+      if (data.length === 0) {
+        $state.reload();
+      }
+    });
+    console.log('updated');
+  };
 });
 

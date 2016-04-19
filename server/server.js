@@ -46,9 +46,19 @@ app.post('/profile', upload.single('file'), function(req, res){
 });
 
 app.put('/profile/:email', function(req, res) {
-  db.profile.updateEvent(req.params.email, req.body, function(data) {
-    res.status(201).send(data); 
-  });
+  if (Object.keys(req.body).length > 1){
+    db.profile.updateAll(req.params.email, req.body, function(st, data){
+      if (st === 400){
+        res.status(201).send(data);
+      } else {
+        res.status(201).end();
+      }
+    });
+  } else {
+    db.profile.updateEvent(req.params.email, req.body, function(data) {
+      res.status(201).send(data); 
+    });    
+  }
 });
 
 app.post('/post', function(req, res){
@@ -57,7 +67,17 @@ app.post('/post', function(req, res){
     res.status(201).send(success);
   });
 });
-
+app.post('/login', function(req, res){
+  console.log('req.body = ' + JSON.stringify(req.body));
+  db.profile.Auth(req.body, function(dataFromDb){
+    if (dataFromDb === true){
+      var token = jwt.encode(req.body.name, secret);
+      res.status(200).send({token: token});
+    } else {
+      res.status(201).send('error');
+    }
+  });
+});
 app.listen(5000, function(){
   console.log('listening on port 5000');
 });

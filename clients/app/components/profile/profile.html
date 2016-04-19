@@ -1,12 +1,34 @@
+  <button ng-show='isAuth' ng-click='logout()' class="btn btn-primary logout-btn">Logout</button>
 <div class="profile" ng-show='getProfile' ng-init="getProfile.select = 'about'">
   <div class="profile-header">
     <div class="col-xs-12 col-sm-4 text-center">    
       <img ng-src="assets/img/profile/{{getProfile.image}}" alt='profile Image' class="profile-header__img"/>
       <h4>{{getProfile.name}}</h4>
       <h5><a href="mailto:{{getProfile.email}}">{{getProfile.email}}</a></h5>  
-      <button ng-show="canEdit" class="btn btn-primary">Edit</button>
+      <button ng-show="canEdit" class="btn btn-primary" ng-click='editing = !editing'>Edit</button>
     </div>
-    <div class="col-xs-12 col-sm-8">
+    <div ng-show='editing' class="col-xs-12 col-sm-8">
+      <form ng-submit='updateProfile(getProfile.email,getProfile.location.location, getProfile.about)'>
+      <legend>Edit Your Profile</legend>
+        <!-- <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control" ng-model='getProfile.email' required />
+        </div> -->
+        <div class="form-group">
+        <label for="location">Location</label>
+          <input class="form-control" id="location" ng-model='getProfile.location.location' placeholder="Enter your address" type="text" googleplace/>
+        </div>
+        <div class="form-group">
+          <label for="about">About</label>
+          <textarea id="about" class="form-control" ng-model="getProfile.about" rows='5'>          
+        </textarea>
+        </div>
+        <div>
+          <button type='submit' class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-xs-12 col-sm-8" ng-show='!editing'>
       <div class="profile-tab clearfix" ng-init='selection = 1'>
         <ul class="profile-tab__menu">
           <li ng-click='selection = 1' class="profile-tab__menu__item col-xs-4" ng-class="{'profile-tab__menu__item--active': selection === 1}">About</li>

@@ -107,7 +107,7 @@ form .progress {
     background-color: #fff;
     text-align:justify;
 }
-.listing-header,.create-header, h1 {
+.listing-header,.create-header,.signin-header, h1 {
   color:#04aab3;
   text-align:center;
   border:none;
@@ -178,4 +178,16 @@ form .progress {
   background:#fff;
   border-top-left-radius:5px;
   border-top-right-radius: 5px;  
+}
+.logout-btn {  
+    right: 5px;
+    position: absolute;
+    top: 60px;
+    border-radius: 0;
+    box-shadow: 1px 1px 1px 1px black;
+    background-color: #499DE6;
+    z-index: 10;
+}
+.logout-btn:hover {
+  background-color:#04579E !important;
 }
