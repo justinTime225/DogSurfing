@@ -43,8 +43,10 @@ exports.profile = {
     var query = {email: email};
     obj.profile.findOneAndUpdate(query, values,{password:0}, function(err, data) {
       if (err) {
+        console.log('update error');
         cb(400, err);
       } else {
+        console.log('update succeeded');
         cb(201, data);
       }
     });
@@ -68,7 +70,11 @@ exports.profile = {
       } else {
         console.log('about to bcrypt this data fo sho');
         console.log(data);
-        cb(bcrypt.compareSync(input.password, data.password));        
+        if (data !== null){
+          cb(bcrypt.compareSync(input.password, data.password));                  
+        } else {
+          cb(false);
+        }
       }
     });
   }

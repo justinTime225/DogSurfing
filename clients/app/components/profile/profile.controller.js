@@ -69,12 +69,18 @@ angular.module('dogSurfing')
   
   $scope.updateProfile = function(email, location, about){
     var temp = $scope.gPlaceDetails;
-    var loc = {
-      location:location,
-      lat:temp.geometry.location.lat(),
-      lng:temp.geometry.location.lng()
-    };
-    var newData = {location:loc, about:about};
+    var newData;
+    if (temp !== undefined){
+      var loc = {
+        location:location,
+        lat:temp.geometry.location.lat(),
+        lng:temp.geometry.location.lng()
+      };
+      newData = {location:loc, about:about};
+     } else {
+      newData = {about:about};
+     }
+
 
     dataFactory.updateProfile(email, newData)
     .then(function(data){

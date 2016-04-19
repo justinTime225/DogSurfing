@@ -46,7 +46,7 @@ app.post('/profile', upload.single('file'), function(req, res){
 });
 
 app.put('/profile/:email', function(req, res) {
-  if (Object.keys(req.body).length > 1){
+  if (!req.body.eventArray){
     db.profile.updateAll(req.params.email, req.body, function(st, data){
       if (st === 400){
         res.status(201).send(data);
